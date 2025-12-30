@@ -1,9 +1,9 @@
-import Contacts from '@/app/components/Contacts'
+import Blogs from '@/app/components/Blogs'
 import React from 'react'
 
 const Index = () => {
   return (
-    <Contacts />
+    <Blogs />
   )
 }
 

@@ -50,8 +50,8 @@ const Header = () => {
             Resources
           </Link>
           <Link
-            href="/blog"
-            className={`nav-link ${isActive("/blog") ? "active" : ""}`}
+            href="/blogs"
+            className={`nav-link ${isActive("/blogs") ? "active" : ""}`}
           >
             Blog
           </Link>
@@ -127,14 +127,14 @@ const Header = () => {
               Resources
             </Link>
             <Link
-              href="/blog"
+              href="/blogs"
               className="mobile-nav-link"
               onClick={toggleMobileMenu}
             >
               Blog
             </Link>
             <Link
-              href="/contact"
+              href="/contacts"
               className="mobile-nav-link"
               onClick={toggleMobileMenu}
             >

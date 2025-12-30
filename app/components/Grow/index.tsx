@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Grow = () => {
-  return (
-    <div>Grow Contents</div>
-  )
-}
+  return <div className="header-wrapper">Grow Contents</div>;
+};
 
-export default Grow
+export default Grow;

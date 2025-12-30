@@ -12,7 +12,7 @@ export default function Home() {
       <Subscriptions />
       <Testimonials />
       <Faqs />
-      
+
     </main>
   );
 }
