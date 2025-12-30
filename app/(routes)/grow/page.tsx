@@ -1,9 +1,8 @@
-import React from 'react'
+import Grow from "@/app/components/Grow";
+import React from "react";
 
-const Grow = () => {
-  return (
-    <div>Grow Page</div>
-  )
-}
+const Index = () => {
+  return <Grow />;
+};
 
-export default Grow
+export default Index;

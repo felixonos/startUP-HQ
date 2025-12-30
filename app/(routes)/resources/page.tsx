@@ -1,9 +1,10 @@
+import Resources from '@/app/components/Resources'
 import React from 'react'
 
-const Resources = () => {
+const Index = () => {
   return (
-    <div>Resources Page</div>
+    <Resources />
   )
 }
 
-export default Resources
+export default Index

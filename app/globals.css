@@ -34,9 +34,17 @@ body {
   flex-direction: column;
 }
 
-.main-content {
+/* .main-content {
   flex: 1;
-}
+  max-width: 1400px;
+  margin: 0 auto;
+  margin: 0 19rem !important;
+  display: flex;
+  min-height: 100vh !important;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rem;
+} */
 
 /* ==================== HEADER STYLES ==================== */
 .header-container {

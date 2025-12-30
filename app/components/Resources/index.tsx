@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Resources = () => {
-  return (
-    <div>Resources Contents</div>
-  )
-}
+  return <div className="header-wrapper">Resources Contents</div>;
+};
 
-export default Resources
+export default Resources;
