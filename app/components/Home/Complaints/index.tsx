@@ -2,13 +2,10 @@ import Image from "next/image";
 
 const Complaints = () => {
   return (
-    <section className="">
+    <section className="w-full mt-8 sm:mt-12 lg:mt-16">
       {/* Hero Section */}
       <div className=" mx-auto px-4 sm:px-6 lg:px-6 py-12 sm:py-16 lg:py-5">
-        <div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:pb-10 items-center"
-
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:pb-10 items-center">
           {/* Left Content */}
           <div className="order-2 lg:order-1 space-y-6">
             <div>

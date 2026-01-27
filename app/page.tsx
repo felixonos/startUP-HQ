@@ -1,5 +1,6 @@
 import Complaints from "./components/Home/Complaints";
 import Faqs from "./components/Home/Faqs";
+import StayConnected from "./components/Home/StayConnected";
 import Subscriptions from "./components/Home/Subscription";
 import Testimonials from "./components/Home/Testimonials";
 import WhatWeDo from "./components/Home/WhatWeDo";
@@ -12,6 +13,7 @@ export default function Home() {
       <Subscriptions />
       <Testimonials />
       <Faqs />
+      <StayConnected/>
     </div>
   );
 }
