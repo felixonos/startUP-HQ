@@ -1,16 +1,23 @@
 "use client";
-
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const bookConsultation = () => {
+      router.push("/contacts");
+
+  };
+
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -43,18 +50,18 @@ const Header = () => {
           >
             Grow
           </Link>
-          <Link
+          {/* <Link
             href="/resources"
             className={`nav-link ${isActive("/resources") ? "active" : ""}`}
           >
             Resources
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/blogs"
             className={`nav-link ${isActive("/blogs") ? "active" : ""}`}
           >
             Blog
-          </Link>
+          </Link> */}
           <Link
             href="/contacts"
             className={`nav-link ${isActive("/contacts") ? "active" : ""}`}
@@ -70,7 +77,7 @@ const Header = () => {
         </nav>
 
         {/* CTA Button - Desktop */}
-        <button className="cta-button desktop-cta">Book a Consultation</button>
+        <button className="cta-button desktop-cta" onClick={bookConsultation}  >Book a Consultation</button>
 
         {/* Mobile Menu Toggle */}
         <button
