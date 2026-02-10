@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Testimonials from "../Home/Testimonials";
+// import Testimonials from "../Home/Testimonials";
 
 const CheckIcon = () => (
   <svg
@@ -21,6 +21,31 @@ const CheckIcon = () => (
     />
   </svg>
 );
+const StarIcon = ({ filled = true }: { filled?: boolean }) => (
+  <svg
+    width="18"
+    height="20"
+    viewBox="0 0 18 20"
+    fill={filled ? "#FFD908" : "none"}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M9 1L11.47 6.6L17.5 7.35L13.05 11.4L14.18 17.35L9 14.5L3.82 17.35L4.95 11.4L0.5 7.35L6.53 6.6L9 1Z"
+      stroke="#FFD908"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+interface TestimonialCardProps {
+  name: string;
+  rating: number;
+  // title: string;
+  testimonial: string;
+  imageSrc: string;
+}
 
 interface PricingCardProps {
   title: string;
@@ -29,7 +54,12 @@ interface PricingCardProps {
   features: string[];
 }
 
-const PricingCard = ({ title, price, description, features }: PricingCardProps) => (
+const PricingCard = ({
+  title,
+  price,
+  description,
+  features,
+}: PricingCardProps) => (
   <div className="bg-[#4A3E00] rounded-3xl p-6 sm:p-8 flex flex-col h-full">
     {/* Plan Badge */}
     <div className="bg-[#fffdf3] rounded-lg py-3 px-4 mb-6">
@@ -40,8 +70,12 @@ const PricingCard = ({ title, price, description, features }: PricingCardProps) 
 
     {/* Price */}
     <div className="mb-2">
-      <span className="text-[#fffdf3] text-4xl sm:text-5xl font-bold">{price}</span>
-      <span className="text-[#fffdf3] text-lg sm:text-xl font-medium">/Month</span>
+      <span className="text-[#fffdf3] text-4xl sm:text-5xl font-bold">
+        {price}
+      </span>
+      <span className="text-[#fffdf3] text-lg sm:text-xl font-medium">
+        /Month
+      </span>
     </div>
 
     {/* Description */}
@@ -69,13 +103,16 @@ const PricingCard = ({ title, price, description, features }: PricingCardProps) 
 );
 
 const Grow = () => {
-  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">(
+    "monthly",
+  );
 
   const monthlyPlans = [
     {
       title: "EMERGING CREATOR",
       price: "$99",
-      description: "For creators just getting started or building their audience",
+      description:
+        "For creators just getting started or building their audience",
       features: [
         "Business structure consultation",
         "Contract template library",
@@ -87,7 +124,8 @@ const Grow = () => {
     {
       title: "ESTABLISHED CREATOR",
       price: "$249",
-      description: "For creators with a growing audience and multiple revenue streams",
+      description:
+        "For creators with a growing audience and multiple revenue streams",
       features: [
         "Everything in Emerging Creator",
         "Up to 3 contract reviews per month",
@@ -101,7 +139,8 @@ const Grow = () => {
     {
       title: "ENTERPRISE CREATOR",
       price: "$499",
-      description: "For high-earning creators, creator-led businesses and influencers",
+      description:
+        "For high-earning creators, creator-led businesses and influencers",
       features: [
         "Everything in Established Creator",
         "Unlimited contract reviews and drafting",
@@ -118,7 +157,8 @@ const Grow = () => {
     {
       title: "EMERGING CREATOR",
       price: "$79",
-      description: "For creators just getting started or building their audience",
+      description:
+        "For creators just getting started or building their audience",
       features: [
         "Business structure consultation",
         "Contract template library",
@@ -130,7 +170,8 @@ const Grow = () => {
     {
       title: "ESTABLISHED CREATOR",
       price: "$199",
-      description: "For creators with a growing audience and multiple revenue streams",
+      description:
+        "For creators with a growing audience and multiple revenue streams",
       features: [
         "Everything in Emerging Creator",
         "Up to 3 contract reviews per month",
@@ -144,7 +185,8 @@ const Grow = () => {
     {
       title: "ENTERPRISE CREATOR",
       price: "$399",
-      description: "For high-earning creators, creator-led businesses and influencers",
+      description:
+        "For high-earning creators, creator-led businesses and influencers",
       features: [
         "Everything in Established Creator",
         "Unlimited contract reviews and drafting",
@@ -191,7 +233,7 @@ const Grow = () => {
             {/* Right Image */}
             <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[456px] lg:rounded-r-3xl overflow-hidden order-1 lg:order-2">
               <Image
-                src="/growhero.svg"
+                src="/grow44.svg"
                 alt="Creators Network"
                 fill
                 className="object-center object-contain"
@@ -201,7 +243,10 @@ const Grow = () => {
         </div>
 
         {/* Testimonials */}
-        <Testimonials />
+
+          <Testimonials />
+
+
 
         {/* Subscription Plans Section */}
         <div className="mt-12 sm:mt-16 lg:mt-20 bg-[#ffd90833] border border-[#4a3e007f] rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-14">
@@ -211,10 +256,11 @@ const Grow = () => {
               THE RIGHT PLAN FOR YOU
             </h2>
             <p className="text-[#4A3E00] text-sm sm:text-base lg:text-lg font-medium leading-relaxed max-w-4xl mx-auto">
-              You&apos;ve put in the work, built the audience, created the impact.
-              Now it&apos;s time to protect it legally, strategically and for the long term.
-              Book a free call and let&apos;s secure what you&apos;ve built with ongoing legal support
-              tailored to your stage as a creator.
+              You&apos;ve put in the work, built the audience, created the
+              impact. Now it&apos;s time to protect it legally, strategically
+              and for the long term. Book a free call and let&apos;s secure what
+              you&apos;ve built with ongoing legal support tailored to your
+              stage as a creator.
             </p>
           </div>
 
@@ -263,3 +309,124 @@ const Grow = () => {
 };
 
 export default Grow;
+
+const TestimonialCard = ({
+  name,
+  rating,
+  testimonial,
+  // title,
+  imageSrc,
+}: TestimonialCardProps) => (
+  <div className="bg-[#FFFDF3] rounded-3xl p-6 min-w-[340px] sm:min-w-[380px] max-w-[400px] flex-shrink-0 overflow-hidden">
+    <div className="flex items-start gap-4 mb-4">
+      {/* Profile Image */}
+      <div className="relative w-[74px] h-[74px] rounded-full overflow-hidden bg-gray-300 flex-shrink-0">
+        <Image src={imageSrc} alt={name} fill className="object-cover" />
+      </div>
+
+      {/* Name and Rating */}
+      <div className="pt-3">
+        <h4 className="text-[#4A3E00] text-lg font-semibold leading-tight mb-2">
+          {name}
+        </h4>
+        {/* <p className="text-[#fffdf3] text-sm font-medium mb-1">{title}</p> */}
+        <div className="flex gap-1">
+          {[...Array(5)].map((_, index) => (
+            <StarIcon key={index} filled={index < rating} />
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Testimonial Text */}
+    <p className="text-[#4A3E00] text-base font-medium leading-snug">
+      {testimonial}
+    </p>
+  </div>
+);
+
+const Testimonials = () => {
+  const testimonials = [
+    {
+      name: "GlobalTemis",
+      rating: 4,
+      testimonial:
+        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
+      imageSrc: "/testimonial.svg",
+    },
+    {
+      name: "Vitor Okafor",
+      rating: 4,
+      testimonial:
+        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
+      imageSrc: "/testimonial3.svg",
+    },
+    {
+      name: "Olushola Olaleye",
+      rating: 4,
+      testimonial:
+        "Startup HQ has been instrumental in my journey as a creator and business leader. They didn’t just provide legal support, they brought structure, clarity as a creator at scale. From protecting my intellectual property to guiding partnerships and content ownership, their work has helped me build with confidence and intention. What I value most is their understanding of the creator economy. They recognize that for us creators, it's more than contracts, we need systems that support growth, visibility, and long-term sustainability.",
+      imageSrc: "/olusola.svg",
+    },
+  ];
+
+  return (
+    <section className="w-full mt-8 sm:mt-12 lg:mt-16">
+      <div className="bg-[#4A3E00] border border-[#4a3e007f] rounded-xl p-6 sm:p-10 lg:p-14 overflow-hidden">
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-[#fffdf3] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-widest uppercase mb-4">
+            Testimonials
+          </h2>
+          <h3 className="text-[#fffdf3] text-xl sm:text-2xl lg:text-3xl font-semibold mb-3">
+            See What Founders Have To Say About Us
+          </h3>
+          <p className="text-[#fffdf3] text-base sm:text-lg lg:text-xl font-normal">
+            Trusted by Founders, Backed by results
+          </p>
+        </div>
+
+        {/* Carousel Container */}
+        <div className="relative overflow-hidden">
+          {/* Gradient Overlays for smooth fade effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#4A3E00] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#4A3E00] to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling Cards */}
+          <div className="flex gap-10 sm:gap-6 animate-scroll hover:pause-animation">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={index}
+                name={testimonial.name}
+                rating={testimonial.rating}
+                testimonial={testimonial.testimonial}
+                imageSrc={testimonial.imageSrc}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Inline styles for animation */}
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-scroll {
+          animation: scroll 20s linear infinite;
+        }
+
+        .animate-scroll:hover,
+        .pause-animation:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+    </section>
+  );
+};

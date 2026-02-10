@@ -1,7 +1,46 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import { useState, FormEvent } from "react";
 
 const Contacts = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setStatus("success");
+      setFormData({ fullName: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      setStatus("error");
+      setErrorMessage(
+        err instanceof Error ? err.message : "Failed to send message."
+      );
+    }
+  };
+
   return (
     <div className="header-wrapper">
       <section className="w-full max-w-7xl mx-auto px-4 py-12">
@@ -34,8 +73,9 @@ const Contacts = () => {
               <div className="flex items-center gap-4">
                 {/* Icon placeholders */}
                 <div className="w-8 h-8 bg-white/20 rounded-full">
+                  {/* Link to Instagram */}
                   <Link
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/startuphq_consult?igsh=M2h4d3BqcDVvaWVl"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon"
@@ -62,9 +102,11 @@ const Contacts = () => {
                     </svg>
                   </Link>
                 </div>
+
                 <div className="w-8 h-8 bg-white/20 rounded-full">
+                  {/* Link to YouTube */}
                   <Link
-                    href="https://youtube.com"
+                    href="https://youtube.com/@startuphq-kj9ui?si=TodBMgLpD8MbCtvK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon"
@@ -78,7 +120,8 @@ const Contacts = () => {
                     </svg>
                   </Link>
                 </div>
-                <div className="w-8 h-8 bg-white/20 rounded-full">
+
+                {/* <div className="w-8 h-8 bg-white/20 rounded-full">
                   <Link
                     href="https://twitter.com"
                     target="_blank"
@@ -89,6 +132,23 @@ const Contacts = () => {
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M15.5 3H18L12 10L19 17H14L9.5 12L4.5 17H2L8.5 9.5L2 3H7L11 7.5L15.5 3ZM14.5 15.5L5 4.5H5.5L15 15.5H14.5Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </Link>
+                </div> */}
+
+                <div className="class">
+                  <Link
+                    href="https://www.tiktok.com/@startuphq_?is_from_webapp=1&sender_device=pc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon"
+                    aria-label="TikTok"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M14 7C15.1046 7 16 6.10457 16 5V3C16 2.44772 15.5523 2 15 2H13.5C13.5 4.5 11.5 6 9 6V8C11.5 8 13.5 6.5 14 5V12C14 15.3137 11.3137 18 8 18C4.68629 18 2 15.3137 2 12C2 8.68629 4.68629 6 8 6V8.5C6.067 8.5 4.5 10.067 4.5 12C4.5 13.933 6.067 15.5 8 15.5C9.933 15.5 11.5 13.933 11.5 12V2H14V7Z"
                         fill="currentColor"
                       />
                     </svg>
@@ -129,18 +189,44 @@ const Contacts = () => {
               Ready to learn more? Talk to our experts today
             </h2>
 
-            <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {status === "success" && (
+              <div className="mb-6 p-4 rounded-xl bg-green-100 text-green-800 text-sm text-center">
+                Your message has been sent successfully. We will get back to you
+                shortly.
+              </div>
+            )}
+
+            {status === "error" && (
+              <div className="mb-6 p-4 rounded-xl bg-red-100 text-red-800 text-sm text-center">
+                {errorMessage}
+              </div>
+            )}
+
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            >
               {/* Full Name */}
               <input
                 type="text"
                 placeholder="Full Name *"
+                required
+                value={formData.fullName}
+                onChange={(e) =>
+                  setFormData({ ...formData, fullName: e.target.value })
+                }
                 className="w-full rounded-xl bg-[#4a3e00]/5 px-4 py-4 outline-none focus:ring-2 focus:ring-[#4a3e00]"
               />
 
               {/* Email */}
               <input
                 type="email"
-                placeholder="Email *"
+                placeholder="Enter Email Address *"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full rounded-xl bg-[#4a3e00]/5 px-4 py-4 outline-none focus:ring-2 focus:ring-[#4a3e00]"
               />
 
@@ -148,6 +234,11 @@ const Contacts = () => {
               <input
                 type="text"
                 placeholder="Subject *"
+                required
+                value={formData.subject}
+                onChange={(e) =>
+                  setFormData({ ...formData, subject: e.target.value })
+                }
                 className="sm:col-span-2 w-full rounded-xl bg-[#4a3e00]/5 px-4 py-4 outline-none focus:ring-2 focus:ring-[#4a3e00]"
               />
 
@@ -155,15 +246,21 @@ const Contacts = () => {
               <textarea
                 placeholder="Your question"
                 rows={4}
+                required
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
                 className="sm:col-span-2 w-full rounded-xl bg-[#4a3e00]/5 px-4 py-4 outline-none focus:ring-2 focus:ring-[#4a3e00]"
               />
 
               {/* Button */}
               <button
                 type="submit"
-                className="sm:col-span-2 mt-4 w-full rounded-xl bg-[#4a3e00] text-white py-4 font-semibold hover:opacity-90 transition"
+                disabled={status === "loading"}
+                className="sm:col-span-2 mt-4 w-full rounded-xl bg-[#4a3e00] text-white py-4 font-semibold hover:opacity-90 transition disabled:opacity-50"
               >
-                Send Message
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>

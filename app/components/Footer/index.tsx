@@ -33,7 +33,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="footer-link">
+                <Link href="/grow" className="footer-link">
                   Services
                 </Link>
               </li>
@@ -45,13 +45,13 @@ const Footer = () => {
             <h3 className="footer-heading">SUPPORT</h3>
             <ul className="footer-links">
               <li>
-                <Link href="/help" className="footer-link">
+                <Link href="/contacts" className="footer-link">
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/report" className="footer-link">
-                  Report an Issue
+                <Link href="/refund" className="footer-link">
+                  Refund Policy
                 </Link>
               </li>
             </ul>
@@ -121,13 +121,14 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="footer-copyright">
-          © 2025 StartupHQ. All Rights Reserved.
+          © 2026 StartupHQ. All Rights Reserved.
         </p>
 
         {/* Social Icons */}
         <div className="social-icons">
+          {/* Instagram */}
           <Link
-            href="https://instagram.com"
+            href="https://www.instagram.com/startuphq_consult?igsh=M2h4d3BqcDVvaWVl"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon"
@@ -153,7 +154,8 @@ const Footer = () => {
               <circle cx="14.5" cy="5.5" r="0.5" fill="currentColor" />
             </svg>
           </Link>
-          <Link
+          {/* LinkedIn */}
+          {/* <Link
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -166,9 +168,11 @@ const Footer = () => {
                 fill="currentColor"
               />
             </svg>
-          </Link>
+          </Link> */}
+
+          {/* TikTok */}
           <Link
-            href="https://tiktok.com"
+            href="https://www.tiktok.com/@startuphq_?is_from_webapp=1&sender_device=pc"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon"
@@ -181,8 +185,10 @@ const Footer = () => {
               />
             </svg>
           </Link>
+
+          {/* YouTube */}
           <Link
-            href="https://youtube.com"
+            href="https://youtube.com/@startuphq-kj9ui?si=TodBMgLpD8MbCtvK"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon"
@@ -195,7 +201,8 @@ const Footer = () => {
               />
             </svg>
           </Link>
-          <Link
+
+          {/* <Link
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -208,7 +215,7 @@ const Footer = () => {
                 fill="currentColor"
               />
             </svg>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </footer>

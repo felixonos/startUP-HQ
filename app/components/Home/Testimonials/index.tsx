@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { title } from "process";
 
 const StarIcon = ({ filled = true }: { filled?: boolean }) => (
   <svg
@@ -23,6 +24,7 @@ const StarIcon = ({ filled = true }: { filled?: boolean }) => (
 interface TestimonialCardProps {
   name: string;
   rating: number;
+  title: string;
   testimonial: string;
   imageSrc: string;
 }
@@ -31,26 +33,22 @@ const TestimonialCard = ({
   name,
   rating,
   testimonial,
+  title,
   imageSrc,
 }: TestimonialCardProps) => (
-  <div className="bg-[#ffd90833] rounded-3xl p-6 min-w-[340px] sm:min-w-[380px] flex-shrink-0">
+  <div className="bg-[#ffd90833] rounded-3xl p-6 min-w-[340px] sm:min-w-[380px] max-w-[400px] flex-shrink-0 overflow-hidden">
     <div className="flex items-start gap-4 mb-4">
       {/* Profile Image */}
       <div className="relative w-[74px] h-[74px] rounded-full overflow-hidden bg-gray-300 flex-shrink-0">
-        <Image
-          src={imageSrc}
-          alt={name}
-          fill
-          className="object-cover"
-        />
-
+        <Image src={imageSrc} alt={name} fill className="object-cover" />
       </div>
 
       {/* Name and Rating */}
       <div className="pt-3">
-        <h4 className="text-[#fffdf3] text-lg font-semibold leading-tight mb-2">
+        <h4 className="text-[#fffdf3] text-lg font-semibold leading-tight mb-1">
           {name}
         </h4>
+        <p className="text-[#fffdf3] text-sm font-medium mb-1">{title}</p>
         <div className="flex gap-1">
           {[...Array(5)].map((_, index) => (
             <StarIcon key={index} filled={index < rating} />
@@ -69,47 +67,50 @@ const TestimonialCard = ({
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Favour",
-      rating: 5,
-      testimonial:
-        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial.svg",
-    },
-    {
-      name: "David",
-      rating: 5,
-      testimonial:
-        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial2.svg",
-    },
-    {
-      name: "Rejoice",
+      name: "Bajulaye Victor",
+      title: "Hanageo Electricals",
       rating: 4,
       testimonial:
-        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial3.svg",
+        "The service was excellent and very helpful! They helped with business registration and boosted our client trust.",
+      imageSrc: "/test2.svg",
     },
     {
-      name: "Favour",
-      rating: 5,
-      testimonial:
-        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial.svg",
-    },
-    {
-      name: "David",
+      name: "Taiye Oloriade",
+      title: "Edumova Ventures",
       rating: 4,
       testimonial:
-        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial2.svg",
+        "Thank you so much for the speed and the attention paid to the filings. I will definitely recommend the service to anyone.",
+      imageSrc: "/test1.svg",
     },
     {
-      name: "Rejoice",
-      rating: 5,
+      name: "Aleksandra Leonteva",
+      title: "PR PILLARS",
+      rating: 4,
       testimonial:
-        "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial3.svg",
+        "As a portuguese company, we were very satisfied with StartupHQ service, the consultation was very helpful for us as a foreign company coming to do business in Nigeria for our tasks. We received the necessary information in a short time and would recommend StartupHQ to others.",
+      imageSrc: "/test3.svg",
     },
+    // {
+    //   name: "Favour",
+    //   rating: 5,
+    //   testimonial:
+    //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
+    //   imageSrc: "/testimonial.svg",
+    // },
+    // {
+    //   name: "David",
+    //   rating: 4,
+    //   testimonial:
+    //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
+    //   imageSrc: "/testimonial2.svg",
+    // },
+    // {
+    //   name: "Rejoice",
+    //   rating: 5,
+    //   testimonial:
+    //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
+    //   imageSrc: "/testimonial3.svg",
+    // },
   ];
 
   return (
@@ -135,11 +136,12 @@ const Testimonials = () => {
           <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#4A3E00] to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling Cards */}
-          <div className="flex gap-4 sm:gap-6 animate-scroll hover:pause-animation">
+          <div className="flex gap-10 sm:gap-6 animate-scroll hover:pause-animation">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
                 name={testimonial.name}
+                title={testimonial.title}
                 rating={testimonial.rating}
                 testimonial={testimonial.testimonial}
                 imageSrc={testimonial.imageSrc}

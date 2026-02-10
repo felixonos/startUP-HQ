@@ -3,21 +3,18 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter()
+  const router = useRouter();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const bookConsultation = () => {
-      router.push("/contacts");
-
+    router.push("/contacts");
   };
-
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -48,7 +45,7 @@ const Header = () => {
             href="/grow"
             className={`nav-link ${isActive("/grow") ? "active" : ""}`}
           >
-            Grow
+            Creators Hub
           </Link>
           {/* <Link
             href="/resources"
@@ -77,7 +74,9 @@ const Header = () => {
         </nav>
 
         {/* CTA Button - Desktop */}
-        <button className="cta-button desktop-cta" onClick={bookConsultation}  >Book a Consultation</button>
+        <button className="cta-button desktop-cta" onClick={bookConsultation}>
+          Book a Consultation
+        </button>
 
         {/* Mobile Menu Toggle */}
         <button
