@@ -116,7 +116,7 @@ const Footer = () => {
           <span className="footer-logo-text">
             Startup<span className="footer-logo-hq">HQ</span>
           </span> */}
-          <img src="/Logo-lightDSK.svg" alt="footer logo" />
+          <img src="/images/Logo-lightDSK.svg" alt="footer logo" />
         </div>
 
         {/* Copyright */}

@@ -233,7 +233,7 @@ const Grow = () => {
             {/* Right Image */}
             <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[456px] lg:rounded-r-3xl overflow-hidden order-1 lg:order-2">
               <Image
-                src="/grow44.svg"
+                src="/images/grow44.svg"
                 alt="Creators Network"
                 fill
                 className="object-center object-contain"
@@ -352,21 +352,21 @@ const Testimonials = () => {
       rating: 4,
       testimonial:
         "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial.svg",
+      imageSrc: "/images/testimonial.svg",
     },
     {
       name: "Vitor Okafor",
       rating: 4,
       testimonial:
         "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-      imageSrc: "/testimonial3.svg",
+      imageSrc: "/images/testimonial3.svg",
     },
     {
       name: "Olushola Olaleye",
       rating: 4,
       testimonial:
         "Startup HQ has been instrumental in my journey as a creator and business leader. They didn’t just provide legal support, they brought structure, clarity as a creator at scale. From protecting my intellectual property to guiding partnerships and content ownership, their work has helped me build with confidence and intention. What I value most is their understanding of the creator economy. They recognize that for us creators, it's more than contracts, we need systems that support growth, visibility, and long-term sustainability.",
-      imageSrc: "/olusola.svg",
+      imageSrc: "/images/olusola.svg",
     },
   ];
 

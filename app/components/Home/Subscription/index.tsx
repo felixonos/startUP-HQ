@@ -140,7 +140,7 @@ const Subscriptions = () => {
         "Consultation (30 minutes)",
       ],
       imagePosition: "right" as const,
-      imageSrc: "/Content1.svg",
+      imageSrc: "/images/Content1.svg",
     },
     {
       title: "Growth Stage",
@@ -155,7 +155,7 @@ const Subscriptions = () => {
         "Tax filing support",
       ],
       imagePosition: "right" as const,
-      imageSrc: "/Content2.svg",
+      imageSrc: "/images/Content2.svg",
     },
     {
       title: "Scaling Stage",
@@ -169,7 +169,7 @@ const Subscriptions = () => {
         "International expansion legal advisory",
       ],
       imagePosition: "left" as const,
-      imageSrc: "/content3.svg",
+      imageSrc: "/images/content3.svg",
     },
   ];
 

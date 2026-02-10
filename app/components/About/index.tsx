@@ -28,7 +28,7 @@ const About = () => {
           {/* Right Image */}
           <div className="relative w-full aspect-[616/456] rounded-3xl overflow-hidden order-1 lg:order-2">
             <Image
-              src="/aboutFirstLayer.svg"
+              src="/images/aboutFirstLayer.svg"
               alt="African startup founders collaborating"
               fill
               className="object-cover"
@@ -60,7 +60,7 @@ const About = () => {
             {/* Mission Image */}
             <div className="relative lg:w-1/2 h-[250px] sm:h-[280px]  rounded-2xl lg:rounded-2xl overflow-hidden order-1 lg:order-2">
               <Image
-                src="/aboutlayer2.svg"
+                src="/images/aboutlayer2.svg"
                 alt="Our Mission"
                 fill
                 className="object-cover object-center"
@@ -73,7 +73,7 @@ const About = () => {
             {/* Vision Image */}
             <div className="relative lg:w-1/2 h-[250px] sm:h-[280px]  rounded-2xl lg:rounded-2xl overflow-hidden">
               <Image
-                src="/aboutLayer3.svg"
+                src="/images/aboutLayer3.svg"
                 alt="Our Vision"
                 fill
                 className="object-cover object-center absolute"
@@ -112,7 +112,7 @@ const About = () => {
             <div className="  bg-[#fffdf3]  rounded-2xl p-4 sm:p-6 text-center">
               <div className="relative w-full aspect-[300/210] rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/wonderful.svg"
+                  src="/images/wonderful.svg"
                   alt="Wonderful Akanbi"
                   fill
                   className="object-cover"
@@ -130,7 +130,7 @@ const About = () => {
             <div className="bg-[#fffdf3] rounded-2xl p-4 sm:p-6 text-center">
               <div className="relative w-full aspect-[300/210] rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/oyindamola.svg"
+                  src="/images/oyindamola.svg"
                   alt="Oyindamola Fasanya"
                   fill
                   className="object-cover"
@@ -148,7 +148,7 @@ const About = () => {
             <div className="bg-[#fffdf3] rounded-2xl p-4 sm:p-6 text-center">
               <div className="relative w-full aspect-[300/210] rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/ifon.svg"
+                  src="/images/ifon.svg"
                   alt="Unyime Stephen Ifon"
                   fill
                   className="object-cover"

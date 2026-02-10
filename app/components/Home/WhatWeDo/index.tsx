@@ -27,7 +27,7 @@ const WhatWeDo = () => {
               {/* Image */}
               <div className="relative h-[250px] sm:h-[280px] md:h-[300px] md:rounded-tl-3xl overflow-hidden">
                 <Image
-                  src="/creatorImage.svg"
+                  src="/images/creatorImage.svg"
                   alt="Startup Founders & Entrepreneurs"
                   fill
                   className="object-cover"
@@ -62,7 +62,7 @@ const WhatWeDo = () => {
               {/* Image */}
               <div className="relative h-[250px] sm:h-[280px] md:h-[300px] order-1 md:order-2 md:rounded-br-3xl overflow-hidden">
                 <Image
-                  src="/creatorImage2.svg"
+                  src="/images/creatorImage2.svg"
                   alt="Creators & Creative Entrepreneurs"
                   fill
                   className="object-cover"

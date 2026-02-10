@@ -30,7 +30,7 @@ const Complaints = () => {
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[450px] lg:max-w-[550px] rounded-2xl overflow-hidden">
               <Image
-                src="/complaint-Image.svg"
+                src="/images/complaint-Image.svg"
                 alt="Compliance professional holding document"
                 width={550}
                 height={400}

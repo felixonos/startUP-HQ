@@ -43,7 +43,7 @@ const StayConnected = () => {
           {/* Right Image */}
           <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[520px] lg:rounded-r-3xl overflow-hidden order-first lg:order-last">
             <Image
-              src="/stayConnected.svg"
+              src="/images/stayConnected.svg"
               alt="Newsletter illustration"
               fill
               className="object-cover"

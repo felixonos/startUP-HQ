@@ -72,7 +72,7 @@ const Testimonials = () => {
       rating: 4,
       testimonial:
         "The service was excellent and very helpful! They helped with business registration and boosted our client trust.",
-      imageSrc: "/test2.svg",
+      imageSrc: "/images/test2.svg",
     },
     {
       name: "Taiye Oloriade",
@@ -80,7 +80,7 @@ const Testimonials = () => {
       rating: 4,
       testimonial:
         "Thank you so much for the speed and the attention paid to the filings. I will definitely recommend the service to anyone.",
-      imageSrc: "/test1.svg",
+      imageSrc: "/images/test1.svg",
     },
     {
       name: "Aleksandra Leonteva",
@@ -88,28 +88,28 @@ const Testimonials = () => {
       rating: 4,
       testimonial:
         "As a portuguese company, we were very satisfied with StartupHQ service, the consultation was very helpful for us as a foreign company coming to do business in Nigeria for our tasks. We received the necessary information in a short time and would recommend StartupHQ to others.",
-      imageSrc: "/test3.svg",
+      imageSrc: "/images/test3.svg",
     },
     // {
     //   name: "Favour",
     //   rating: 5,
     //   testimonial:
     //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-    //   imageSrc: "/testimonial.svg",
+    //   imageSrc: "/images/testimonial.svg",
     // },
     // {
     //   name: "David",
     //   rating: 4,
     //   testimonial:
     //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-    //   imageSrc: "/testimonial2.svg",
+    //   imageSrc: "/images/testimonial2.svg",
     // },
     // {
     //   name: "Rejoice",
     //   rating: 5,
     //   testimonial:
     //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-    //   imageSrc: "/testimonial3.svg",
+    //   imageSrc: "/images/testimonial3.svg",
     // },
   ];
 

@@ -30,7 +30,7 @@ const Header = () => {
           <span className="logo-text">
             Startup<span className="logo-hq">HQ</span>
           </span> */}
-          <img src="/logo-header.svg" alt="logo" />
+          <img src="/images/logo-header.svg" alt="logo" />
         </Link>
 
         {/* Desktop Navigation */}

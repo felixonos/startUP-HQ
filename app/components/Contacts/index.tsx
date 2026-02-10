@@ -19,7 +19,8 @@ const Contacts = () => {
     setErrorMessage("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const endpoint = process.env.NODE_ENV === "development" ? "/api/contact" : "/contact.php";
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
