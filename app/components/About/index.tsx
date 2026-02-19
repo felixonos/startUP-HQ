@@ -20,9 +20,14 @@ const About = () => {
             </p>
 
             {/* Button */}
-            <button className="px-8 py-3 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold text-base sm:text-lg rounded-full transition-colors duration-300">
+            <a
+              href="https://paystack.com/buy/startuphq-consultation-call-wpllsx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold text-base sm:text-lg rounded-full transition-colors duration-300"
+            >
               Get Started
-            </button>
+            </a>
           </div>
 
           {/* Right Image */}

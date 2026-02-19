@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { title } from "process";
+import { useState, useRef, TouchEvent } from "react";
 
 const StarIcon = ({ filled = true }: { filled?: boolean }) => (
   <svg
@@ -65,6 +65,10 @@ const TestimonialCard = ({
 );
 
 const Testimonials = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const testimonials = [
     {
       name: "Bajulaye Victor",
@@ -90,28 +94,26 @@ const Testimonials = () => {
         "As a portuguese company, we were very satisfied with StartupHQ service, the consultation was very helpful for us as a foreign company coming to do business in Nigeria for our tasks. We received the necessary information in a short time and would recommend StartupHQ to others.",
       imageSrc: "/images/test3.svg",
     },
-    // {
-    //   name: "Favour",
-    //   rating: 5,
-    //   testimonial:
-    //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-    //   imageSrc: "/images/testimonial.svg",
-    // },
-    // {
-    //   name: "David",
-    //   rating: 4,
-    //   testimonial:
-    //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-    //   imageSrc: "/images/testimonial2.svg",
-    // },
-    // {
-    //   name: "Rejoice",
-    //   rating: 5,
-    //   testimonial:
-    //     "Nowadays, it isn't great uncommon to see lenders rapidly adopting",
-    //   imageSrc: "/images/testimonial3.svg",
-    // },
   ];
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
+
+    if (diff > threshold && activeIndex < testimonials.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    } else if (diff < -threshold && activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
+  };
 
   return (
     <section className="w-full mt-8 sm:mt-12 lg:mt-16">
@@ -129,14 +131,76 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden">
-          {/* Gradient Overlays for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#4A3E00] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#4A3E00] to-transparent z-10 pointer-events-none" />
+        {/* Mobile Swiper - visible on small screens only */}
+        <div
+          className="sm:hidden relative overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            className="flex transition-transform duration-300 ease-in-out"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="w-full flex-shrink-0 px-2">
+                <div className="bg-[#ffd90833] rounded-3xl p-6 h-[280px] flex flex-col">
+                  <div className="flex items-start gap-4 mb-4 flex-shrink-0">
+                    <div className="relative w-[74px] h-[74px] rounded-full overflow-hidden bg-gray-300 flex-shrink-0">
+                      <Image
+                        src={testimonial.imageSrc}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="pt-3">
+                      <h4 className="text-[#fffdf3] text-lg font-semibold leading-tight mb-1">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-[#fffdf3] text-sm font-medium mb-1">
+                        {testimonial.title}
+                      </p>
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <StarIcon key={i} filled={i < testimonial.rating} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="overflow-y-auto flex-1 min-h-0">
+                    <p className="text-[#fffdf3] text-base font-medium leading-snug">
+                      {testimonial.testimonial}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                  index === activeIndex ? "bg-[#FFD908]" : "bg-[#fffdf3]/30"
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Carousel - hidden on small screens */}
+        <div className="hidden sm:block relative overflow-hidden">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#4A3E00] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#4A3E00] to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling Cards */}
-          <div className="flex gap-10 sm:gap-6 animate-scroll hover:pause-animation">
+          <div className="flex gap-6 animate-scroll hover:pause-animation">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
@@ -151,7 +215,7 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* Inline styles for animation */}
+      {/* Inline styles for desktop animation */}
       <style jsx>{`
         @keyframes scroll {
           0% {

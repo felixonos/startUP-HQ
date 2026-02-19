@@ -85,9 +85,14 @@ const SubscriptionCard = ({
           <FeatureItem key={index} text={feature} />
         ))}
       </div>
-      <button className="w-fit px-8 py-4 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold rounded-lg transition-colors duration-200 text-base sm:text-lg">
+      <a
+        href="https://paystack.com/buy/startuphq-consultation-call-wpllsx"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-fit inline-block px-8 py-4 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold rounded-lg transition-colors duration-200 text-base sm:text-lg"
+      >
         Get Started
-      </button>
+      </a>
     </div>
   );
 

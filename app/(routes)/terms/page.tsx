@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Terms from "@/app/components/Terms";
-import React from "react";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Read the StartupHQ terms of service governing the use of our legal compliance advisory services.",
+};
 
 const Index = () => {
   return <Terms />;

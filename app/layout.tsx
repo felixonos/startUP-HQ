@@ -15,8 +15,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "StartupHQ",
-  description: "Your startup growth partner",
+  title: {
+    default: "StartupHQ — Startup Compliance Advisory for African Founders",
+    template: "%s | StartupHQ",
+  },
+  description:
+    "StartupHQ helps African founders launch with confidence, stay compliant, and scale sustainably. Legal compliance advisory built for startups.",
+  metadataBase: new URL("https://startuphqconsult.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "StartupHQ",
+    title: "StartupHQ — Startup Compliance Advisory for African Founders",
+    description:
+      "Legal compliance advisory built for African startups. Launch with confidence, stay compliant, and scale sustainably.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "StartupHQ — Startup Compliance Advisory for African Founders",
+    description:
+      "Legal compliance advisory built for African startups. Launch with confidence, stay compliant, and scale sustainably.",
+  },
 };
 
 export default function RootLayout({

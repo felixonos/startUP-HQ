@@ -20,11 +20,26 @@ const Contacts = () => {
 
     try {
       const endpoint = process.env.NODE_ENV === "development" ? "/api/contact" : "/contact.php";
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+
+      let res;
+      if (process.env.NODE_ENV === "development") {
+        res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+      } else {
+        const params = new URLSearchParams();
+        params.append("fullName", formData.fullName);
+        params.append("email", formData.email);
+        params.append("subject", formData.subject);
+        params.append("message", formData.message);
+        res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: params.toString(),
+        });
+      }
 
       const data = await res.json();
 

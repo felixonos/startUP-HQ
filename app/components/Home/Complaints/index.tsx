@@ -21,9 +21,14 @@ const Complaints = () => {
               <br className="hidden sm:block" />
               Compliance Advisory for Nigerian Founders
             </p>
-            <button className="px-8 py-3.5 bg-[#F5D547] hover:bg-[#e5c537] text-[#1a1a1a] font-semibold rounded-md transition-colors duration-200 text-base sm:text-lg">
+            <a
+              href="https://paystack.com/buy/startuphq-consultation-call-wpllsx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3.5 bg-[#F5D547] hover:bg-[#e5c537] text-[#1a1a1a] font-semibold rounded-md transition-colors duration-200 text-base sm:text-lg"
+            >
               Get Started
-            </button>
+            </a>
           </div>
 
           {/* Right Image */}
