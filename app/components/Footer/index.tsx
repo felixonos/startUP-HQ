@@ -1,16 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFrameLoading, setIsFrameLoading] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter submission
-    console.log("Newsletter signup:", email);
-    setEmail("");
+    setIsFrameLoading(true);
+    setIsModalOpen(true);
   };
 
   return (
@@ -33,7 +35,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/grow" className="footer-link">
+                <Link href="/creators-hub" className="footer-link">
                   Services
                 </Link>
               </li>
@@ -218,6 +220,53 @@ const Footer = () => {
           </Link> */}
         </div>
       </div>
+      {/* Newsletter Modal — rendered via portal to escape <main>'s stacking context */}
+      {isModalOpen && createPortal(
+        <div
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-black/60 p-4"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div
+            className="relative bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              aria-label="Close"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M12 4L4 12M4 4l8 8"
+                  stroke="#333"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+
+            {/* Loading Spinner */}
+            {isFrameLoading && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-white gap-4">
+                <div className="w-12 h-12 border-4 border-[#FFD908] border-t-[#4A3E00] rounded-full animate-spin" />
+                <p className="text-[#4A3E00] text-sm font-medium">Loading...</p>
+              </div>
+            )}
+
+            {/* ConvertKit Embed */}
+            <iframe
+              src="https://startuphqconsult.kit.com/e6dd7bb5d2"
+              width="100%"
+              height="680"
+              style={{ border: "none", display: "block" }}
+              title="Subscribe to StartupHQ Newsletter"
+              onLoad={() => setTimeout(() => setIsFrameLoading(false), 2000)}
+            />
+          </div>
+        </div>,
+        document.body
+      )}
     </footer>
   );
 };

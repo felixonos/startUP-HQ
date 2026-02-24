@@ -1,20 +1,25 @@
+"use client";
+
 import Image from "next/image";
+import { useInView } from "../../hooks/useInView";
 
 const About = () => {
+  const ref = useInView();
+
   return (
     <div className="header-wrapper">
-      <section className="w-full py-8 sm:py-12 lg:py-16">
+      <section className="w-full py-8 sm:py-12 lg:py-16" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
             {/* Title */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#4A3E00] leading-tight mb-4 sm:mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#4A3E00] leading-tight mb-4 sm:mb-6 animate-pop-up">
               Legal Compliance Advisory Firm Built For{" "}
               <span className="text-[#FFD908] italic">African StartUps.</span>
             </h1>
 
             {/* Description */}
-            <p className="text-[#4A3E00] text-base sm:text-lg font-normal italic leading-relaxed mb-6 sm:mb-8 max-w-lg">
+            <p className="text-[#4A3E00] text-base sm:text-lg font-normal italic leading-relaxed mb-6 sm:mb-8 max-w-lg animate-pop-up delay-100">
               We help founders launch with confidence, stay compliant, and scale
               sustainably without the legal overwhelm.
             </p>
@@ -24,14 +29,14 @@ const About = () => {
               href="https://paystack.com/buy/startuphq-consultation-call-wpllsx"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold text-base sm:text-lg rounded-full transition-colors duration-300"
+              className="inline-block px-8 py-3 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold text-base sm:text-lg rounded-full transition-colors duration-300 animate-pop-in delay-200"
             >
               Get Started
             </a>
           </div>
 
           {/* Right Image */}
-          <div className="relative w-full aspect-[616/456] rounded-3xl overflow-hidden order-1 lg:order-2">
+          <div className="relative w-full aspect-[616/456] rounded-3xl overflow-hidden order-1 lg:order-2 animate-pop-right">
             <Image
               src="/images/aboutFirstLayer.svg"
               alt="African startup founders collaborating"
@@ -44,14 +49,14 @@ const About = () => {
         {/* Second Section - Mission & Vision */}
         <div className="mt-12 sm:mt-16 lg:mt-20 bg-[#ffd90833] rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-14">
           {/* Section Header */}
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#4A3E00] text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#4A3E00] text-center mb-8 sm:mb-12 lg:mb-16 animate-pop-up">
             Simplifying Your Options to Make Decision-Making Easier
           </h2>
 
           {/* Our Mission Card */}
           <div className="flex flex-col lg:flex-row mb-6 sm:mb-8">
             {/* Mission Text */}
-            <div className="bg-[#ffd90866] rounded-2xl lg:rounded-l-3xl lg:rounded-r-none p-6 sm:p-8 lg:p-10 flex flex-col justify-center lg:w-1/2 order-2 lg:order-1">
+            <div className="bg-[#ffd90866] rounded-2xl lg:rounded-l-3xl lg:rounded-r-none p-6 sm:p-8 lg:p-10 flex flex-col justify-center lg:w-1/2 order-2 lg:order-1 animate-pop-left">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#4A3E00] mb-4">
                 Our Mission
               </h3>
@@ -63,7 +68,7 @@ const About = () => {
             </div>
 
             {/* Mission Image */}
-            <div className="relative lg:w-1/2 h-[250px] sm:h-[280px]  rounded-2xl lg:rounded-2xl overflow-hidden order-1 lg:order-2">
+            <div className="relative lg:w-1/2 h-[250px] sm:h-[280px]  rounded-2xl lg:rounded-2xl overflow-hidden order-1 lg:order-2 animate-pop-right">
               <Image
                 src="/images/aboutlayer2.svg"
                 alt="Our Mission"
@@ -76,7 +81,7 @@ const About = () => {
           {/* Our Vision Card */}
           <div className="flex flex-col lg:flex-row">
             {/* Vision Image */}
-            <div className="relative lg:w-1/2 h-[250px] sm:h-[280px]  rounded-2xl lg:rounded-2xl overflow-hidden">
+            <div className="relative lg:w-1/2 h-[250px] sm:h-[280px]  rounded-2xl lg:rounded-2xl overflow-hidden animate-pop-left">
               <Image
                 src="/images/aboutLayer3.svg"
                 alt="Our Vision"
@@ -86,14 +91,15 @@ const About = () => {
             </div>
 
             {/* Vision Text */}
-            <div className="bg-[#ffd90866] rounded-2xl lg:rounded-r-3xl lg:rounded-l-none p-6 sm:p-8 lg:p-10 flex flex-col justify-center lg:w-1/2">
+            <div className="bg-[#ffd90866] rounded-2xl lg:rounded-r-3xl lg:rounded-l-none p-6 sm:p-8 lg:p-10 flex flex-col justify-center lg:w-1/2 animate-pop-right">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#4A3E00] mb-4">
                 Our Vision
               </h3>
               <p className="text-[#4A3E00] text-sm sm:text-base font-normal leading-relaxed">
-                Our mission is to provide startups with ease of doing business
-                by providing the requisite regulatory compliance services
-                tailored to their unique needs.
+                To empower entrepreneurship across Africa by providing clear,
+                accessible legal compliance solutions that simplify doing
+                business on the continent making Africa the best and most
+                profitable place to launch and grow a company.
               </p>
             </div>
           </div>
@@ -102,7 +108,7 @@ const About = () => {
         {/* Third Section - Meet Our Team */}
         <div className="mt-12 sm:mt-16 lg:mt-20 bg-[#4A3E00] rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-14">
           {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-10">
+          <div className="text-center mb-8 sm:mb-10 animate-pop-up">
             <h2 className="text-[#fffdf3] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-widest uppercase mb-4">
               MEET OUR TEAM
             </h2>
@@ -114,7 +120,7 @@ const About = () => {
           {/* Team Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Team Member 1 */}
-            <div className="  bg-[#fffdf3]  rounded-2xl p-4 sm:p-6 text-center">
+            <div className="bg-[#fffdf3] rounded-2xl p-4 sm:p-6 text-center animate-pop-in">
               <div className="relative w-full aspect-[300/210] rounded-xl overflow-hidden mb-4">
                 <Image
                   src="/images/wonderful.svg"
@@ -132,7 +138,7 @@ const About = () => {
             </div>
 
             {/* Team Member 2 */}
-            <div className="bg-[#fffdf3] rounded-2xl p-4 sm:p-6 text-center">
+            <div className="bg-[#fffdf3] rounded-2xl p-4 sm:p-6 text-center animate-pop-in delay-200">
               <div className="relative w-full aspect-[300/210] rounded-xl overflow-hidden mb-4">
                 <Image
                   src="/images/oyindamola.svg"
@@ -150,7 +156,7 @@ const About = () => {
             </div>
 
             {/* Team Member 3 */}
-            <div className="bg-[#fffdf3] rounded-2xl p-4 sm:p-6 text-center">
+            <div className="bg-[#fffdf3] rounded-2xl p-4 sm:p-6 text-center animate-pop-in delay-400">
               <div className="relative w-full aspect-[300/210] rounded-xl overflow-hidden mb-4">
                 <Image
                   src="/images/ifon.svg"

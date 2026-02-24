@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, TouchEvent } from "react";
+import { useInView } from "../../../hooks/useInView";
 
 const StarIcon = ({ filled = true }: { filled?: boolean }) => (
   <svg
@@ -36,8 +37,8 @@ const TestimonialCard = ({
   title,
   imageSrc,
 }: TestimonialCardProps) => (
-  <div className="bg-[#ffd90833] rounded-3xl p-6 min-w-[340px] sm:min-w-[380px] max-w-[400px] flex-shrink-0 overflow-hidden">
-    <div className="flex items-start gap-4 mb-4">
+  <div className="bg-[#ffd90833] rounded-3xl p-6 min-w-[340px] sm:min-w-[380px] max-w-[400px] shrink-0 sm:h-60 sm:overflow-hidden flex flex-col">
+    <div className="flex items-start gap-4 mb-4 shrink-0">
       {/* Profile Image */}
       <div className="relative w-[74px] h-[74px] rounded-full overflow-hidden bg-gray-300 flex-shrink-0">
         <Image src={imageSrc} alt={name} fill className="object-cover" />
@@ -58,9 +59,11 @@ const TestimonialCard = ({
     </div>
 
     {/* Testimonial Text */}
-    <p className="text-[#fffdf3] text-base font-medium leading-snug">
-      {testimonial}
-    </p>
+    <div className="overflow-y-auto flex-1 min-h-0">
+      <p className="text-[#fffdf3] text-base font-medium leading-snug">
+        {testimonial}
+      </p>
+    </div>
   </div>
 );
 
@@ -68,12 +71,13 @@ const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const ref = useInView();
 
   const testimonials = [
     {
       name: "Bajulaye Victor",
       title: "Hanageo Electricals",
-      rating: 4,
+      rating: 5,
       testimonial:
         "The service was excellent and very helpful! They helped with business registration and boosted our client trust.",
       imageSrc: "/images/test2.svg",
@@ -81,7 +85,7 @@ const Testimonials = () => {
     {
       name: "Taiye Oloriade",
       title: "Edumova Ventures",
-      rating: 4,
+      rating: 5,
       testimonial:
         "Thank you so much for the speed and the attention paid to the filings. I will definitely recommend the service to anyone.",
       imageSrc: "/images/test1.svg",
@@ -89,10 +93,18 @@ const Testimonials = () => {
     {
       name: "Aleksandra Leonteva",
       title: "PR PILLARS",
-      rating: 4,
+      rating: 5,
       testimonial:
         "As a portuguese company, we were very satisfied with StartupHQ service, the consultation was very helpful for us as a foreign company coming to do business in Nigeria for our tasks. We received the necessary information in a short time and would recommend StartupHQ to others.",
       imageSrc: "/images/test3.svg",
+    },
+    {
+      name: " Eniola Akinmusere",
+      title: "GIFT AFFAIRE PACKAGING COMPANY",
+      rating: 5,
+      testimonial:
+        "Your service was excellent! Thank you so much for the swift and professional service. So glad we re finally registered as a company and you made the process seamless, I will refer you anytime",
+      imageSrc: "/images/testy.jpeg",
     },
   ];
 
@@ -116,17 +128,17 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="w-full mt-8 sm:mt-12 lg:mt-16">
+    <section className="w-full mt-8 sm:mt-12 lg:mt-16" ref={ref}>
       <div className="bg-[#4A3E00] border border-[#4a3e007f] rounded-xl p-6 sm:p-10 lg:p-14 overflow-hidden">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-[#fffdf3] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-widest uppercase mb-4">
+          <h2 className="text-[#fffdf3] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-widest uppercase mb-4 animate-pop-up">
             Testimonials
           </h2>
-          <h3 className="text-[#fffdf3] text-xl sm:text-2xl lg:text-3xl font-semibold mb-3">
+          <h3 className="text-[#fffdf3] text-xl sm:text-2xl lg:text-3xl font-semibold mb-3 animate-pop-up delay-100">
             See What Founders Have To Say About Us
           </h3>
-          <p className="text-[#fffdf3] text-base sm:text-lg lg:text-xl font-normal">
+          <p className="text-[#fffdf3] text-base sm:text-lg lg:text-xl font-normal animate-pop-up delay-200">
             Trusted by Founders, Backed by results
           </p>
         </div>
@@ -200,7 +212,7 @@ const Testimonials = () => {
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#4A3E00] to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling Cards */}
-          <div className="flex gap-6 animate-scroll hover:pause-animation">
+          <div className="flex  gap-6 animate-scroll hover:pause-animation">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={index}

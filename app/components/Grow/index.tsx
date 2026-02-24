@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, TouchEvent } from "react";
+import { useInView } from "../../hooks/useInView";
 // import Testimonials from "../Home/Testimonials";
 
 const CheckIcon = () => (
@@ -52,13 +53,14 @@ interface PricingCardProps {
   price: string;
   description: string;
   features: string[];
+  link: string;
 }
 
 const PricingCard = ({
   title,
-  price,
   description,
   features,
+  link,
 }: PricingCardProps) => (
   <div className="bg-[#4A3E00] rounded-3xl p-6 sm:p-8 flex flex-col h-full">
     {/* Plan Badge */}
@@ -69,17 +71,17 @@ const PricingCard = ({
     </div>
 
     {/* Price */}
-    <div className="mb-2">
+    {/* <div className="mb-2">
       <span className="text-[#fffdf3] text-4xl sm:text-5xl font-bold">
         {price}
       </span>
       <span className="text-[#fffdf3] text-lg sm:text-xl font-medium">
         /Month
       </span>
-    </div>
+    </div> */}
 
     {/* Description */}
-    <p className="text-[#fffdf3] text-sm sm:text-base font-medium leading-relaxed mb-6 border-t border-[#fffdf3] pt-4">
+    <p className="text-[#fffdf3] text-sm sm:text-base font-medium leading-relaxed mb-6  pt-4">
       {description}
     </p>
 
@@ -96,9 +98,14 @@ const PricingCard = ({
     </div>
 
     {/* Button */}
-    <button className="w-full py-3 bg-transparent border-2 border-[#fffdf3] text-[#fffdf3] font-semibold rounded-full hover:bg-[#fffdf3] hover:text-[#4A3E00] transition-colors duration-300">
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-full py-3 bg-transparent border-2 border-[#fffdf3] text-[#fffdf3] font-semibold rounded-full hover:bg-[#fffdf3] hover:text-[#4A3E00] transition-colors duration-300 block text-center"
+    >
       Activate Now
-    </button>
+    </a>
   </div>
 );
 
@@ -106,11 +113,12 @@ const Grow = () => {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">(
     "monthly",
   );
+  const ref = useInView();
 
   const monthlyPlans = [
     {
       title: "EMERGING CREATOR",
-      price: "$99",
+      // price: "$99",
       description:
         "For creators just getting started or building their audience",
       features: [
@@ -120,10 +128,11 @@ const Grow = () => {
         "Intellectual property (IP) basics",
         "Monthly legal Q&A",
       ],
+      link: "https://paystack.shop/pay/fj5jd4g43n",
     },
     {
       title: "ESTABLISHED CREATOR",
-      price: "$249",
+      // price: "$249",
       description:
         "For creators with a growing audience and multiple revenue streams",
       features: [
@@ -135,10 +144,11 @@ const Grow = () => {
         "NDPR/data privacy compliance",
         "Priority legal support",
       ],
+      link: "https://paystack.shop/pay/el1v37p0qp",
     },
     {
       title: "ENTERPRISE CREATOR",
-      price: "$499",
+      // price: "$499",
       description:
         "For high-earning creators, creator-led businesses and influencers",
       features: [
@@ -150,13 +160,14 @@ const Grow = () => {
         "24/7 priority support",
         "Quarterly strategy sessions",
       ],
+      link: "https://paystack.shop/pay/w1vs3mng6t",
     },
   ];
 
   const yearlyPlans = [
     {
       title: "EMERGING CREATOR",
-      price: "$79",
+      // price: "$79",
       description:
         "For creators just getting started or building their audience",
       features: [
@@ -166,10 +177,11 @@ const Grow = () => {
         "Intellectual property (IP) basics",
         "Monthly legal Q&A",
       ],
+      link: "https://paystack.shop/pay/fj5jd4g43n",
     },
     {
       title: "ESTABLISHED CREATOR",
-      price: "$199",
+      // price: "$199",
       description:
         "For creators with a growing audience and multiple revenue streams",
       features: [
@@ -181,10 +193,11 @@ const Grow = () => {
         "NDPR/data privacy compliance",
         "Priority legal support",
       ],
+      link: "https://paystack.shop/pay/el1v37p0qp",
     },
     {
       title: "ENTERPRISE CREATOR",
-      price: "$399",
+      // price: "$399",
       description:
         "For high-earning creators, creator-led businesses and influencers",
       features: [
@@ -196,6 +209,7 @@ const Grow = () => {
         "24/7 priority support",
         "Quarterly strategy sessions",
       ],
+      link: "https://paystack.shop/pay/w1vs3mng6t",
     },
   ];
 
@@ -203,20 +217,20 @@ const Grow = () => {
 
   return (
     <div className="header-wrapper">
-      <section className="w-full py-8 sm:py-12 lg:py-16">
+      <section className="w-full py-8 sm:py-12 lg:py-16" ref={ref}>
         {/* Creators Network Section */}
         <div className="rounded-2xl sm:rounded-3xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left Content */}
             <div className="p-6 sm:p-10 lg:p-14 flex flex-col justify-center order-2 lg:order-1">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#4A3E00] leading-tight mb-4 sm:mb-6">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#4A3E00] leading-tight mb-4 sm:mb-6 animate-pop-up">
                 <span className="text-[#FFD908] italic">
                   We&apos;re the Lawyers for Creators Network
                 </span>{" "}
                 - The Legal Brand for Creator-Led Businesses
               </h1>
 
-              <p className="text-[#4A3E00] text-sm sm:text-base font-normal italic leading-relaxed mb-6 sm:mb-8">
+              <p className="text-[#4A3E00] text-sm sm:text-base font-normal italic leading-relaxed mb-6 sm:mb-8 animate-pop-up delay-100">
                 You&apos;re Not Just Creating Content. You&apos;re Building a
                 Legacy. Get your <span className="font-bold">FREE</span>{" "}
                 creators legal checklist to create a future-proof brand that
@@ -225,10 +239,10 @@ const Grow = () => {
 
               <div>
                 <a
-                  href="https://paystack.com/buy/startuphq-consultation-call-wpllsx"
+                  href="https://startuphqconsult.kit.com/c523f9ddfb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-8 py-3 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold text-base sm:text-lg rounded-full transition-colors duration-300"
+                  className="inline-block px-8 py-3 bg-[#FFD908] hover:bg-[#e5c537] text-[#4A3E00] font-semibold text-base sm:text-lg rounded-full transition-colors duration-300 animate-pop-in delay-200"
                 >
                   Get Started
                 </a>
@@ -236,7 +250,7 @@ const Grow = () => {
             </div>
 
             {/* Right Image */}
-            <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[456px] lg:rounded-r-3xl overflow-hidden order-1 lg:order-2">
+            <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[456px] lg:rounded-r-3xl overflow-hidden order-1 lg:order-2 animate-pop-right">
               <Image
                 src="/images/grow44.svg"
                 alt="Creators Network"
@@ -249,14 +263,12 @@ const Grow = () => {
 
         {/* Testimonials */}
 
-          <Testimonials />
-
-
+        <Testimonials />
 
         {/* Subscription Plans Section */}
         <div className="mt-12 sm:mt-16 lg:mt-20 bg-[#ffd90833] border border-[#4a3e007f] rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-14">
           {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-8 sm:mb-12 animate-pop-up">
             <h2 className="text-[#4A3E00] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-widest uppercase mb-4 sm:mb-6">
               THE RIGHT PLAN FOR YOU
             </h2>
@@ -296,14 +308,15 @@ const Grow = () => {
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pop-up delay-200">
             {currentPlans.map((plan, index) => (
               <PricingCard
                 key={index}
                 title={plan.title}
-                price={plan.price}
+                price={""}
                 description={plan.description}
                 features={plan.features}
+                link={plan.link}
               />
             ))}
           </div>
@@ -322,8 +335,8 @@ const TestimonialCard = ({
   // title,
   imageSrc,
 }: TestimonialCardProps) => (
-  <div className="bg-[#FFFDF3] rounded-3xl p-6 min-w-[340px] sm:min-w-[380px] max-w-[400px] flex-shrink-0 overflow-hidden">
-    <div className="flex items-start gap-4 mb-4">
+  <div className="bg-[#FFFDF3] rounded-3xl p-6 min-w-[340px] sm:min-w-[380px] max-w-[400px] shrink-0 sm:h-60 sm:overflow-hidden flex flex-col">
+    <div className="flex items-start gap-4 mb-4 shrink-0">
       {/* Profile Image */}
       <div className="relative w-[74px] h-[74px] rounded-full overflow-hidden bg-gray-300 flex-shrink-0">
         <Image src={imageSrc} alt={name} fill className="object-cover" />
@@ -344,9 +357,11 @@ const TestimonialCard = ({
     </div>
 
     {/* Testimonial Text */}
-    <p className="text-[#4A3E00] text-base font-medium leading-snug">
-      {testimonial}
-    </p>
+    <div className="overflow-y-auto flex-1 min-h-0">
+      <p className="text-[#4A3E00] text-base font-medium leading-snug">
+        {testimonial}
+      </p>
+    </div>
   </div>
 );
 

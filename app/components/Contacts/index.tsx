@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useState, FormEvent } from "react";
+import { useInView } from "../../hooks/useInView";
 
 const Contacts = () => {
+  const ref = useInView();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -59,18 +61,18 @@ const Contacts = () => {
 
   return (
     <div className="header-wrapper">
-      <section className="w-full max-w-7xl mx-auto px-4 py-12">
+      <section className="w-full max-w-7xl mx-auto px-4 py-12" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 rounded-xl overflow-hidden border border-yellow-900/20">
           {/* LEFT: Contact Info */}
-          <div className="bg-[#4a3e00] text-[#fffdf3] p-6 sm:p-10 flex flex-col gap-8">
+          <div className="bg-[#4a3e00] text-[#fffdf3] p-6 sm:p-10 flex flex-col gap-8 animate-pop-left">
             <h2 className="text-2xl sm:text-4xl font-semibold">
               Our Contact Info
             </h2>
 
-            <p className="text-sm sm:text-base leading-relaxed">
+            {/* <p className="text-sm sm:text-base leading-relaxed">
               Kindly reach out to us via any of our communication channels
               listed below.
-            </p>
+            </p> */}
 
             <div>
               <p className="font-semibold">Corporate Office:</p>
@@ -79,8 +81,7 @@ const Contacts = () => {
 
             <p className="text-sm">
               Kindly reach to us on any of our communications channels with
-              details listed below. Kindly reach to us on any of our
-              communications channels with details listed below.
+              details listed below.
             </p>
 
             {/* Contact Icons */}
@@ -173,7 +174,7 @@ const Contacts = () => {
 
                 <div className="class">
                   <Link
-                    href="https://linkedin.com"
+                    href="http://www.linkedin.com/company/startuphq-consult"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon"
@@ -200,7 +201,7 @@ const Contacts = () => {
           </div>
 
           {/* RIGHT: Contact Form */}
-          <div className="bg-[#fffdf3] p-6 sm:p-10">
+          <div className="bg-[#fffdf3] p-6 sm:p-10 animate-pop-right">
             <h2 className="text-xl sm:text-3xl font-semibold text-[#4a3e00] text-center mb-8">
               Ready to learn more? Talk to our experts today
             </h2>

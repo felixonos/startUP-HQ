@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -10,7 +10,15 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -44,7 +52,10 @@ const Header = () => {
 
   return (
     <>
-      <header className="header-container">
+      <header
+        ref={headerRef}
+        className={`header-container transition-shadow duration-300 ${isScrolled ? "shadow-md" : ""}`}
+      >
         <div className="header-spacer"></div>
         <div className="header-wrapper">
           {/* Logo */}
@@ -65,8 +76,8 @@ const Header = () => {
               Home
             </Link>
             <Link
-              href="/grow"
-              className={`nav-link ${isActive("/grow") ? "active" : ""}`}
+              href="/creators-hub"
+              className={`nav-link ${isActive("/creators-hub") ? "active" : ""}`}
             >
               Creators Hub
             </Link>
@@ -132,7 +143,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="mobile-menu">
+          <div className="mobile-menu menu-slide-down">
             <nav className="mobile-nav">
               <Link
                 href="/"
@@ -142,7 +153,7 @@ const Header = () => {
                 Home
               </Link>
               <Link
-                href="/grow"
+                href="/creators-hub"
                 className="mobile-nav-link"
                 onClick={toggleMobileMenu}
               >
@@ -187,11 +198,11 @@ const Header = () => {
       {/* Booking Modal */}
       {isBookingOpen && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 modal-overlay-enter"
           onClick={closeBooking}
         >
           <div
-            className="relative bg-white rounded-2xl w-[95vw] max-w-[900px] h-[85vh] overflow-hidden"
+            className="relative bg-white rounded-2xl w-[95vw] max-w-[900px] h-[85vh] overflow-hidden modal-slide-up"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
