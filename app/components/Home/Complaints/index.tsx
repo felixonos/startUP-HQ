@@ -27,7 +27,7 @@ const services = [
     title: "Pricing & Return Policy",
     description:
       "Custom policy documents that clearly outline your pricing structure, refund terms, and customer rights essential for transparency and trust.",
-    href: "/contacts",
+    href: "https://paystack.com/buy/pricing-and-return-policy-ktoqfk",
     icon: (
       <svg
         width="40"
@@ -67,9 +67,10 @@ const services = [
     ),
   },
   {
-    title: "Delivery Policy",
+    title: "Delivery & Refund Policy",
     description:
       "Define how your product or service is delivered, including timelines, methods, and customer expectations. Crucial for e-commerce and service-based startups.",
+
     href: "https://paystack.com/buy/refund--delivery-policy-nlzcpn",
     icon: (
       <svg
@@ -248,7 +249,7 @@ const services = [
     title: "Business Consultation Call",
     description:
       "Speak directly with a legal advisor to get clarity on your compliance needs, risks, or next steps — perfect for founders who want quick, expert insight.",
-    // https://paystack.com/buy/startuphq-consultation-call-wpllsx
+
     href: "https://paystack.shop/business-contracts",
     external: true,
     icon: (

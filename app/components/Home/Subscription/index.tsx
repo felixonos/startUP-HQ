@@ -305,7 +305,7 @@ const Subscriptions = () => {
         "International expansion legal advisory",
       ],
       imagePosition: "left" as const,
-      imageSrc: "/images/content3.svg",
+      imageSrc: "/images/content44.svg",
       link: "https://paystack.shop/scale-stage-packages",
     },
   ];
